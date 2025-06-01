@@ -1,72 +1,89 @@
-# MDP REPRESENTATION
+## Exp-1 
+# MDP REPRESENTATION ->
 
 ## AIM:
-To Mapping a Real-World Problem to a Reinforcement Learning Problem
+The MDP REPRESENTATION the robot navigate a warehouse to  deliver address.
 
 ## PROBLEM STATEMENT:
-
+The MDP representation of a robot navigating a warehouse to reach the pick-up point and deliver the package to the delivery address.
 ### Problem Description
-The problem of autonomous drone delivery can be formulated as a Reinforcement Learning (RL) problem. With the growing demand for fast
-and efcient deliveries, drones can be used to transport packages while avoiding obstacles, optimizing routes, and minimizing energy
-consumption. The goal is to develop an RL-based system that allows drones to navigate urban environments efciently and deliver packages in
-the shortest time possible
+To deliver the food from pick up point to delevery address
 
 ### State Space
-The state space represents the current conditions of the delivery system, including:
+```
+ I.The robot's current position
+ II.The location of the picked up.
+ III. The destination where the package needs to be delivered.
+ IV.The positions of obstacles in the warehouse.
+```
 
-Drone’s current position (GPS coordinates).
-Destination location.
-Wind speed and direction.
-Battery level of the drone.
-Presence of obstacles (e.g., buildings, birds, restricted airspaces)
 ### Sample State
-A possible state representation:
+```
+1.The robot is at 1 position
+2.The package to be picked up is at 3 position.
+3. The delivery point is at 6 position.
+4. Obstacles are at positions 2 and 4 position.
+```
 
-Drone Position: (Latitude: 37.7749, Longitude: -122.4194).
-Destination: (Latitude: 37.7849, Longitude: -122.4094).
-Wind Speed: 10 km/h, Direction: North.
-Battery Level: 80%.
-Obstacles Nearby: High-rise buildings at (37.7799, -122.4144).
-Trafc Conditions: Moderate congestion in drop-off area.
 ### Action Space
-The action space consists of different drone control options:
-
-Adjust altitude (increase/decrease height to avoid obstacles).
-Change direction (move north, south, east, or west).
-Increase or decrease speed based on battery efciency.
-Hover in place if no safe route is available.
-Return to base if the battery is too low to continue the mission.
+```
+0    ->>  Same State
+1    ->> Left
+2    ->> Down
+3    ->> Right
+4    ->> Up
+```
 ### Sample Action
-A possible action could be:
+ 0-> 3-> 3-> 1
 
-Increase altitude by 10 meters to avoid a high-rise building in the drone’s path.
 ### Reward Function
-The reward function incentivizes optimal package delivery while considering efciency and safety:
+```
+1.+1 for successfully reach the goal state
+2. 0 for obstraction and start and pickup and reward
+```
 
-Positive Rewards:
-
-Successfully reaching the destination (+10 reward).
-Taking the shortest route (+5 reward for minimizing distance).
-Conserving battery power (+3 reward for efcient energy use).
-
-Negative Rewards:
-
-Collision with obstacles (-10 penalty for crashes).
-Deviating too far from the optimal route (-5 penalty).
-Excessive battery consumption (-3 penalty for inefcient fying).
-Hovering unnecessarily (-2 penalty for wasting time).
 ### Graphical Representation
-Developed by: AUGUSTINE J
-Register no:212222240015
-![WhatsApp Image 2025-03-18 at 23 37 21_abaa4798](https://github.com/user-attachments/assets/2d06d5a5-41fd-49d5-8ca1-5097127eec97)
+
+![WhatsApp Image 2025-04-23 at 11 27 52_c2349466](https://github.com/user-attachments/assets/2726df17-fa19-4748-b1a9-315f221df897)
 
 
 ## PYTHON REPRESENTATION:
-![Screenshot 2025-03-14 140436](https://github.com/user-attachments/assets/bbb08ed5-0c1f-4866-b77a-065ba356bfcc)
+```
+p={
+    1:{
+    0:[(1,0,0,False)],
+    1:[(1,0,0,False)],
+    2:[(0.7,3,0,True),(0.3,2,0,False)],
+    3:[(0.3,2,0,False),(0.7,3,0,True)],
+    4:[(1,0,0,False)]},
+    2:{
+       0:[(1,2,0,True)],
+       1:[(1,2,0,True)],
+       2:[(1,2,0,True)],
+       3:[(1,2,0,True)],
+       4:[(1,2,0,True)]}, 
+    3:{
+       0:[(1,3,0,False)],
+       1:[(1,3,0,False)],
+       2:[(1,3,0,False)],
+       3:[(0.98,4,1,True),(0.7,1,0,False)],
+       4:[(0.7,1,0,False),(0.98,4,1,True)]}, 
+    4:{
+       0:[(1,4,0,True)],
+       1:[(1,4,0,True)],
+       2:[(1,4,0,True)],
+       3:[(1,4,0,True)],
+       4:[(1,4,0,True)]}   
+}
+
+```
+
 
 ## OUTPUT:
+![image](https://github.com/user-attachments/assets/7c7e7d2d-2e8a-4a12-b67b-39d8aa6f81c3)
 
-![Screenshot 2025-03-14 140521](https://github.com/user-attachments/assets/797b937e-c1eb-4fc7-9fb2-d8284133b203)
 
 ## RESULT:
-Thus, the given real-world problem of choosing the autonomous drone delivery is successfully represented in MDP form.
+Thus, The MDP Represntation of reaching a deliver address from warehous while avoiding 
+ obstacles and minimizing travel time is successfully executed.
+
